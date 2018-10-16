@@ -1,50 +1,6 @@
-Let's Split
-======
-
-This readme and most of the code are from https://github.com/ahtn/tmk_keyboard/
-
-Split keyboard firmware for Arduino Pro Micro or other ATmega32u4
-based boards.
-
-**Hardware files for the Let's Split are now stored at http://qmk.fm/lets_split/**
-
-## Build Guide
-
-A build guide for putting together the Let's Split v2 can be found here: [An Overly Verbose Guide to Building a Let's Split Keyboard](https://github.com/nicinabox/lets-split-guide)
-
-There is additional information there about flashing and adding RGB underglow.
 
 ## First Time Setup
 
-Download or clone the whole firmware and navigate to the keyboards/lets_split directory. Once your dev env is setup, you'll be able to generate the default .hex using:
-
-```
-$ make rev2-default
-```
-
-You will see a lot of output and if everything worked correctly you will see the built hex file:
-
-```
-lets_split_rev2_default.hex
-```
-
-If you would like to use one of the alternative keymaps, or create your own, copy one of the existing [keymaps](keymaps/) and run make like so:
-
-
-```
-$ make rev2-YOUR_KEYMAP_NAME
-```
-
-If everything worked correctly you will see a file:
-
-```
-lets_split_rev2_YOUR_KEYMAP_NAME.hex
-```
-
-For more information on customizing keymaps, take a look at the primary documentation for [Customizing Your Keymap](/readme.md##customizing-your-keymap) in the main readme.md.
-
-### Let's split 1.0
-If you have a first generation Let's Split you will need to use the revision 1 code. To do so, use `rev1` in all your commands instead.
 
 Features
 --------
@@ -115,8 +71,6 @@ not be very difficult to adapt it to support more if required.
 
 Flashing
 -------
-From the `lets_split` directory run `make SUBPROJECT-KEYMAP-avrdude` for automatic serial port resolution and flashing.
-Example: `make rev2-default-avrdude`
 
 
 Choosing which board to plug the USB cable into (choosing Master)
