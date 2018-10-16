@@ -1,6 +1,24 @@
-
 ## First Time Setup
 
+1. Clone original QMK repository
+```
+git clone
+```
+2. From qmk_firmware directory install all dependencies
+```
+sudo util/install_dependencies.sh
+```
+3. [Optional]
+Delete all subdirectories from "keyboards"
+4. Clone this repository to "keyboards"
+```
+cd keyboards
+git clone https://github.com/Padrecc/Dactyl.git
+```
+5. Build firmware from qmk_firmware directory
+```
+make Dactyl/rev1:Default"
+```
 
 Features
 --------
