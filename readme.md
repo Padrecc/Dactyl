@@ -1,3 +1,9 @@
+## Windows environment preparation
+
+1. Install Bash Shell on Windows, follow this guide
+2. Download and install AVRDudess, link here
+3. Download and install WinAVR or LIBUSB to get the LIBUSB0.DLL
+
 ## First Time Setup
 
 1. Clone original QMK repository
@@ -20,33 +26,62 @@ git clone https://github.com/Padrecc/Dactyl.git
 make Dactyl/rev1:Default"
 ```
 
-Features
---------
+## Flashing
 
-For the full Quantum Mechanical Keyboard feature list, see [the parent readme.md](/readme.md).
+# FLASHING (Not the one that gets you in trouble)
 
-Some features supported by the firmware:
+1) Open up AVRDUDESS
 
-* Either half can connect to the computer via USB, or both halves can be used
-  independently.
-* You only need 3 wires to connect the two halves. Two for VCC and GND and one
-  for serial communication.
-* Optional support for I2C connection between the two halves if for some
-  reason you require a faster connection between the two halves. Note this
-  requires an extra wire between halves and pull-up resistors on the data lines.
+> * If you get an error saying that it can’t start because libusb0.dll is missing then **read step 2 of the SETUP GUIDE** above
 
-Required Hardware
------------------
+2) Select **Atmel AppNote AVR109 Boot Loader** for the **programmer**
 
-Apart from diodes and key switches for the keyboard matrix in each half, you
-will need:
+![](http://i.imgur.com/ks0bPdL.png)
 
-* 2 Arduino Pro Micro's. You can find theses on aliexpress for ≈3.50USD each.
-* 2 TRRS sockets and 1 TRRS cable, or 2 TRS sockets and 1 TRS cable
+3) Select **ATmega32U4** for the **MCU** 
 
-Alternatively, you can use any sort of cable and socket that has at least 3
-wires. If you want to use I2C to communicate between halves, you will need a
-cable with at least 4 wires and 2x 4.7kΩ pull-up resistors
+![](http://i.imgur.com/wefkngw.png)
+
+4) Select your .hex file in the for the flash box (click the … box to the right)
+
+![](http://i.imgur.com/ZR0UON1.png)
+
+5) Select the **`eeprom-lefthand.eep`** file in the QMK Lets_split folder for the **EEPROM box** 
+
+> * Make sure to select only one file, as you will have to change this file when flashing the right side
+
+6) Connect **only the left side** of your board to the computer through a USB cable
+
+7) Take note of the port drop down menu and see if you have any COMM listings, if you do, then Don’t select those particular ones in the next step 
+
+![](http://i.imgur.com/b55RQa5.png)
+
+8) Locate the **ground and reset** pins on your pro micro and short them, was 2 from the top on the right side of the pro micro for me
+
+![](http://www.14core.com/wp-content/uploads/2015/12/Reset-Button-Place-Micro-Mini-Pro.jpg)
+
+9) Take something metal and touch between the **ground and reset** pins to short them out, or if your’s has a reset button then press that to enter the bootloader mode
+
+10) Quickly open the Port drop down menu and select the new **COMM** port that has popped up, then click program 
+
+![](http://i.imgur.com/uYK8bpd.png)
+
+> * If the pro micro came out of bootloader mode, then you won’t be able to flash it, but all you have to do is enter bootloader mode again by shorting the pins again.
+
+11) **Now the left side is done, we have to flash the right side**, so connect it to your PC through USB 
+
+12) **Be sure to change the EEPROM file to the right hand one (eeprom-righthand.eep)**
+
+13) Locate the ground and reset pins on your pro micro and short them, was 3 from the top on the right side of the pro micro for me
+
+14) Take something metal and touch between the ground and reset pins to short them out, or if your’s has a reset button then press that to enter the bootloader mode
+
+15) Quickly open the Port drop down menu and select the new COMM port that has popped up, then click program 
+
+> * If the pro micro came out of bootloader mode, then you won’t be able to flash it, but all you have to do is enter bootloader mode again by shorting the pins again.
+
+16) Time to test it out, plug in your TRRS cable to both sides, and then plug in the USB on the left side and open a notepad window to test out all the keys and make sure your soldering skills were good
+
 
 Optional Hardware
 -----------------
@@ -76,81 +111,3 @@ unnecessary in simple use cases.
 
 You can change your configuration between serial and i2c by modifying your `config.h` file.
 
-Notes on Software Configuration
--------------------------------
-
-Configuring the firmware is similar to any other QMK project. One thing
-to note is that `MATRIX_ROWS` in `config.h` is the total number of rows between
-the two halves, i.e. if your split keyboard has 4 rows in each half, then
-`MATRIX_ROWS=8`.
-
-Also the current implementation assumes a maximum of 8 columns, but it would
-not be very difficult to adapt it to support more if required.
-
-Flashing
--------
-
-
-Choosing which board to plug the USB cable into (choosing Master)
---------
-Because the two boards are identical, the firmware has logic to differentiate the left and right board.
-
-It uses two strategies to figure things out: look at the EEPROM (memory on the chip) or looks if the current board has the usb cable.
-
-The EEPROM approach requires additional setup (flashing the eeeprom) but allows you to swap the usb cable to either side.
-
-The USB cable approach is easier to setup and if you just want the usb cable on the left board, you do not need to do anything extra.
-
-### Setting the left hand as master
-If you always plug the usb cable into the left board, nothing extra is needed as this is the default. Comment out `EE_HANDS` and comment out `I2C_MASTER_RIGHT` or `MASTER_RIGHT` if for some reason it was set.
-
-### Setting the right hand as master
-If you always plug the usb cable into the right board, add an extra flag to your `config.h`
-```
- #define MASTER_RIGHT
-```
-
-### Setting EE_hands to use either hands as master
-If you define `EE_HANDS` in your `config.h`, you will need to set the
-EEPROM for the left and right halves.
-
-The EEPROM is used to store whether the
-half is left handed or right handed. This makes it so that the same firmware
-file will run on both hands instead of having to flash left and right handed
-versions of the firmware to each half. To flash the EEPROM file for the left
-half run:
-```
-avrdude -p atmega32u4 -P $(COM_PORT) -c avr109 -U eeprom:w:eeprom-lefthand.eep
-// or the equivalent in dfu-programmer
-
-```
-and similarly for right half
-```
-avrdude -p atmega32u4 -P $(COM_PORT) -c avr109 -U eeprom:w:eeprom-righhand.eep
-// or the equivalent in dfu-programmer
-```
-
-NOTE: replace `$(COM_PORT)` with the port of your device (e.g. `/dev/ttyACM0`)
-
-After you have flashed the EEPROM, you then need to set `EE_HANDS` in your config.h, rebuild the hex files and reflash.
-
-Note that you need to program both halves, but you have the option of using
-different keymaps for each half. You could program the left half with a QWERTY
-layout and the right half with a Colemak layout using bootmagic's default layout option.
-Then if you connect the left half to a computer by USB the keyboard will use QWERTY and Colemak when the
-right half is connected.
-
-
-Notes on Using Pro Micro 3.3V
------------------------------
-
-Do update the `F_CPU` parameter in `rules.mk` to `8000000` which reflects
-the frequency on the 3.3V board.
-
-Also, if the slave board is producing weird characters in certain columns,
-update the following line in `matrix.c` to the following:
-
-```
-// _delay_us(30);  // without this wait read unstable value.
-_delay_us(300);  // without this wait read unstable value.
-```
