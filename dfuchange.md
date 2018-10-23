@@ -46,3 +46,10 @@ https://dfu-programmer.github.io/
 - Connect controller and reset it with GND+RST
 - Update windows driver for bootload with "ATmega32U4" one from dfu-programmer 
 
+- Flash firmware
+
+dfu-programmer.exe atmega32u4 flash d:\Work\Dactyl\qmk_firmware\Dactyl_rev1_default.hex
+- Flash eeprom
+
+dfu-programmer.exe atmega32u4 flash --eeprom d:\Work\Dactyl\qmk_firmware\keyboards\Dactyl\eeprom-righthand.eep
+
