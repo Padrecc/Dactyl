@@ -35,3 +35,14 @@ avrdude -c avrisp -p m32U4 -P COM9 -b19200 -U flash:w:"Dactyl_rev1_default_produ
 for right hand
 
 avrdude -c avrisp -p m32U4 -P COM9 -b19200 -U flash:w:"Dactyl_rev1_default_production.hex":a -U lfuse:w:0x5E:m -U hfuse:w:0xD9:m -U efuse:w:0xC3:m -U lock:w:0x3F:m -U eeprom:w:"eeprom-righthand.eep":a 
+
+
+### DFU programm
+
+Download and install
+https://sourceforge.net/projects/dfu-programmer/files/latest/download
+https://dfu-programmer.github.io/
+
+- Connect controller and reset it with GND+RST
+- Update windows driver for bootload with "ATmega32U4" one from dfu-programmer 
+
