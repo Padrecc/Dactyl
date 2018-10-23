@@ -1,3 +1,25 @@
 Links:
 https://www.instructables.com/id/Burn-Bootloader-Arduino-Nano-As-ISP-to-Pro-Micro/
 https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/
+
+
+1. Prepare ISP:
+Connect Arduino Nano to PC.
+
+Arduino IDE: Tools-> Select Board -> Arduino Nano
+Tools->Processor-> Atmega328p (old bootloader)
+Tools->Processor->AVRISP mkII
+Open File->Examples->11.Arduino ISP
+Upload Sketch
+
+2. Wiring:
+Nano | Micro
+GND - GND
+5V - Vcc
+D10 - RST
+D11 - 16
+D12 - 14
+D13 - 15
+
+3. Flash
+avrdude -c avrisp -p m32U4 -P COM9 -b19200 -U flash:w:"Dactyl_rev1_default_production.hex":a -U lfuse:w:0x5E:m -U hfuse:w:0xD9:m -U efuse:w:0xC3:m -U lock:w:0x3F:m
