@@ -47,6 +47,24 @@ Nano | Micro
 - D12 - 14
 - D13 - 15
 
+### Compiling bootloader
+
+Add following lines to the keymaps's config.h 
+```
+#define QMK_ESC_OUTPUT B5 // usually COL
+#define QMK_ESC_INPUT B6 // usually ROW
+#define QMK_LED B0
+#define QMK_SPEAKER C6
+```
+to the rules.mk
+```
+BOOTLOADER = qmk-dfu
+```
+Build firmare with production target
+```
+make Dactyl/rev1:Default:production"
+```
+
 ### Flashing bootloader
 
 Test
@@ -61,6 +79,11 @@ avrdude -c avrisp -p m32U4 -P COM9 -b19200 -U flash:w:"Dactyl_rev1_default_produ
 ```
 avrdude -c avrisp -p m32U4 -P COM9 -b19200 -U flash:w:"Dactyl_rev1_default_production.hex":a -U lfuse:w:0x5E:m -U hfuse:w:0xD9:m -U efuse:w:0xC3:m -U lock:w:0x3F:m -U eeprom:w:"eeprom-righthand.eep":a 
 ```
+# Return Caterina bootloader
+```
+avrdude -c avrisp -p m32U4 -P COM9 -b19200 -U flash:w:"Caterina-promicro16.hex":a -U lfuse:w:0xFF:m -U hfuse:w:0xD8:m -U efuse:w:0xC3:m -U lock:w:0x3F:m
+```
+
 ## Flashing firmware to Pro Micro with QMK DFU
 
 Download and install 
