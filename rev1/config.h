@@ -18,14 +18,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef REV1_CONFIG_H
 #define REV1_CONFIG_H
-#define CATERINA_BOOTLOADER
+//#define CATERINA_BOOTLOADER
 #include "../config.h"
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x3060
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    CH boxMods
+#define MANUFACTURER    Me
 #define PRODUCT         Dactyl
 #define DESCRIPTION     A split ergonomic keyboard for the adventerous makers
 
@@ -35,16 +35,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 6
 
 
+//QMK DFU related stuff
+#define QMK_ESC_OUTPUT B4 // usually COL
+#define QMK_ESC_INPUT B2 // usually ROW
+#define QMK_LED B0
+#define QMK_SPEAKER C6
+
 // wiring of each half
 
 //#define MATRIX_COL_PINS { B5,B4,E6,D7,C6,D4}
 //#define MATRIX_ROW_PINS { B6,B2, B3, B1,F7, F6,F5 }
 
-#define MATRIX_COL_PINS { B4,E6,D7,C6,D4,D0}
-#define MATRIX_ROW_PINS { B2, B3, B1,F7, F6,F5,F4 }
-
-
-#define CATERINA_BOOTLOADER
+#define MATRIX_COL_PINS { B4,E6,D7,D4,D2,D3}
+#define MATRIX_ROW_PINS { B2,B3,B1,F7,F6,F5,F4 }
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
@@ -66,24 +69,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 )
 
 /* ws2812 RGB LED */
-#define RGB_DI_PIN D3
-#define RGBLIGHT_TIMER
-#define RGBLED_NUM 12    // Number of LEDs
-#define ws2812_PORTREG  PORTD
-#define ws2812_DDRREG   DDRD
+//#define RGB_DI_PIN D3
+//#define RGBLIGHT_TIMER
+//#define RGBLED_NUM 12    // Number of LEDs
+//#define ws2812_PORTREG  PORTD
+//#define ws2812_DDRREG   DDRD
 
 /* Audio
 Timer 1: #define B5_AUDIO #define B6_AUDIO #define B7_AUDIO
 Timer 3: #define C4_AUDIO #define C5_AUDIO #define C6_AUDIO
  */
-
-#define B6_AUDIO
+#define C6_AUDIO
 //#define C4_AUDIO
 
-/*Backlight
-pin of the backlight - B5, B6, B7 use PWM
-*/
-#define BACKLIGHT_PIN B5
+//pin of the backlight - B5, B6, B7 use PWM
 
 /*
  * Feature disable options

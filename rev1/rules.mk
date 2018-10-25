@@ -1,2 +1,3 @@
+BOOTLOADER = qmk-dfu
 BACKLIGHT_ENABLE = no
 AUDIO_ENABLE = yes
