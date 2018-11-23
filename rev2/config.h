@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef REV2_CONFIG_H
 #define REV2_CONFIG_H
-#define CATERINA_BOOTLOADER
+//#define CATERINA_BOOTLOADER
 #include "../config.h"
 
 /* USB Device descriptor parameter */
@@ -36,11 +36,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // wiring of each half
 
-#define MATRIX_COL_PINS { B5,B4,E6,D7,C6,D4}
-#define MATRIX_ROW_PINS { B6,B2, B3, B1,F7, F6,F5 }
-// #define MATRIX_COL_PINS { B6, B2, B3, B1, F7, F6 } //uncomment this line and comment line above if you need to reverse left-to-right key order
+//#define MATRIX_COL_PINS { B5,B4,E6,D7,C6,D4}
+//#define MATRIX_ROW_PINS { B6,B2, B3, B1,F7, F6,F5 }
 
-//#define CATERINA_BOOTLOADER
+//QMK DFU related stuff
+#define QMK_ESC_OUTPUT B4 // usually COL
+#define QMK_ESC_INPUT B2 // usually ROW
+#define QMK_LED B0
+#define QMK_SPEAKER C6
+
+// wiring of each half
+
+//#define MATRIX_COL_PINS { B5,B4,E6,D7,C6,D4}
+//#define MATRIX_ROW_PINS { B6,B2, B3, B1,F7, F6,F5 }
+
+//#define MATRIX_COL_PINS { B4,E6,D7,D4,D2,D3}
+//#define MATRIX_ROW_PINS { B2,B3,B1,F7,F6,F5,F4 }
+
+#define MATRIX_COL_PINS { B4,E6,D7,D4,D2,D3 }
+#define MATRIX_ROW_PINS { B2,B3,B1,F7,F6,F5
+
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
