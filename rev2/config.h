@@ -31,8 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* key matrix size */
 // Rows are doubled-up
-//#define MATRIX_ROWS 14
-//#define MATRIX_COLS 6
+#define MATRIX_ROWS 14
+#define MATRIX_COLS 6
 
 // wiring of each half
 
@@ -47,24 +47,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* number of backlight levels */
 // #define BACKLIGHT_LEVELS 3
-
-/* key matrix size */
-// Rows are doubled-up
-#define MATRIX_ROWS 12
-#define MATRIX_COLS 6
-
-
-//QMK DFU related stuff
-#define QMK_ESC_OUTPUT B4 // usually COL
-#define QMK_ESC_INPUT B2 // usually ROW
-#define QMK_LED B0
-#define QMK_SPEAKER C6
-
-// wiring of each half
-
-//#define MATRIX_COL_PINS { B4,E6,D7,D4,D2,D3 }
-//#define MATRIX_ROW_PINS { B2,B3,B1,F7,F6,F5 }
-
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCING_DELAY 5
