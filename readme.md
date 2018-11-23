@@ -21,9 +21,13 @@ Delete all subdirectories from "keyboards"
 cd keyboards
 git clone https://github.com/Padrecc/Dactyl.git
 ```
+or
+```
+git clone https://github.com/Padrecc/Dactyl.git
+```
 5. Build firmware from qmk_firmware directory
 ```
-make Dactyl/rev1:Default"
+make Dactyl/rev1:default"
 ```
 
 ## Replacing CATERINA bootloader with QMK DFU using Arduino Nano as ISP
