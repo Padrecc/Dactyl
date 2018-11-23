@@ -1,6 +1,6 @@
 #include "Dactyl.h"
 
-#ifdef ONEHAND_ENABLE
+#ifdef ONEHAND_ENABLE1
 __attribute__ ((weak))
 const keypos_t hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 
