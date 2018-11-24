@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-#include "rev3.h"
+//#include "rev3.h"
 
 #define BASE 0 // default layer
 #define SYMB 1 // symbols

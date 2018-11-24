@@ -45,6 +45,7 @@ F_USB = $(F_CPU)
 #     different sizes, comment this out, and the correct address will be loaded 
 #     automatically (+60). See bootloader.mk for all options.
 BOOTLOADER = caterina
+#BOOTLOADER = qmk-dfu
 
 # Interrupt driven control endpoint task(+60)
 OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT

@@ -7,6 +7,8 @@
     #include "rev1.h"
 #elif KEYBOARD_Dactyl_rev2
     #include "rev2.h"
+#elif KEYBOARD_Dactyl_rev3
+    #include "rev3.h"
 #endif
 
 
