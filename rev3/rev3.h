@@ -69,7 +69,7 @@
 	{ R50, R51, R52, R53, R54, R55 }  \
 	}
 #endif
-
+#endif
 //#define LAYOUT_Dactyl LAYOUT
 
 

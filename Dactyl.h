@@ -27,6 +27,4 @@
 		KC_##L50, KC_##L51, KC_##L52, KC_##L53, KC_##L54, KC_##L55, KC_##R50, KC_##R51, KC_##R52, KC_##R53, KC_##R54, KC_##R55 \
     )
 #endif
-
-
 #endif
