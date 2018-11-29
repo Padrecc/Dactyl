@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 //QMK DFU related stuff
-#define QMK_ESC_OUTPUT B4 // usually COL
+#define QMK_ESC_OUTPUT B5 // usually COL
 #define QMK_ESC_INPUT B2 // usually ROW
 #define QMK_LED B0
 #define QMK_SPEAKER C6
@@ -49,7 +49,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MATRIX_COL_PINS { B4,E6,D7,D4,D2,D3}
 //#define MATRIX_ROW_PINS { B2,B3,B1,F7,F6,F5,F4 }
 
-#define MATRIX_COL_PINS { B4,E6,D7,D4,D0,D1 }
+#define MATRIX_COL_PINS { B5,B4,E6,D7,D4,D1 }
 #define MATRIX_ROW_PINS { B2,B3,B1,F7,F6,F5 }
 
 
